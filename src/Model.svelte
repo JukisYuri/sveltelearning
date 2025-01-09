@@ -1,7 +1,6 @@
 <script>
     export let showModel = false // Step 4
-    export let message //Dùng trong outside component
-    let isPromo = true
+    let isPromo = false
 </script>
 
 {#if showModel} 
@@ -9,7 +8,9 @@
 <div class="backdrop" class:promo={isPromo} on:click|self> 
     <!-- self rất quan trọng để khi nhấp trúng component nó không tự động thoát ra -->
     <div class="modal">
-        <p>{message}</p>
+        <slot name="title"></slot>
+        <p>Hey there...</p>
+        <slot></slot>
     </div>
 </div>
 {/if}

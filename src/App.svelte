@@ -1,5 +1,7 @@
 <script>
 	import Model from "./Model.svelte";
+	import AddPersonForm from "./AddPersonForm.svelte"
+
 	let showModel = false 
 	let people = [
 		{name: 'Jukis', beltColor: 'black', age: '18', id: '1'},
@@ -15,9 +17,12 @@
 	} 
 </script>
 
-<Model message="Hey, I'm prob value" {showModel} on:click={toggleModel}/> 
+<Model {showModel} on:click={toggleModel}>
+	<AddPersonForm></AddPersonForm>
+</Model>
+
 <main>
-	<button on:click|once={toggleModel}>Show Model</button> 
+	<button on:click={toggleModel}>Show Model</button> 
 	{#each people as person (person.id)}
 	<div>
 		<h4>{person.name}</h4>
