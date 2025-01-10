@@ -15,10 +15,15 @@
 	const toggleModel = () => {
 		showModel = !showModel
 	} 
+
+	const addPerson = (e) => {
+		const person = e.detail // Không dùng push vì nó sẽ overwrite lại object
+		people = [person, ...people]
+	}
 </script>
 
 <Model {showModel} on:click={toggleModel}>
-	<AddPersonForm></AddPersonForm>
+	<AddPersonForm on:addPerson={addPerson}/>
 </Model>
 
 <main>
